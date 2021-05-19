@@ -303,8 +303,8 @@ lws_service_adjust_timeout(struct lws_context *context, int timeout_ms, int tsi)
 	{
 		lws_usec_t u = __lws_sul_service_ripe(pt->pt_sul_owner,
 				      LWS_COUNT_PT_SUL_OWNERS, lws_now_usecs());
-		if (u < timeout_ms * 1000)
-			timeout_ms = u / 1000;
+		if (u < (lws_usec_t)timeout_ms * 1000)
+			timeout_ms = (int)(u / 1000);
 	}
 #endif
 
